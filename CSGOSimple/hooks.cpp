@@ -3,6 +3,8 @@
 #include "options.hpp"
 #include "helpers/utils.hpp"
 #include "features/bhop.hpp"
+#include "draw.h"
+#include "menu.hpp"
 
 #pragma intrinsic(_ReturnAddress)  
 
@@ -46,6 +48,9 @@ namespace Hooks
 		clientmode_hook.hook_index(index::OverrideView, hkOverrideView);
 
 		sv_cheats.hook_index(index::SvCheatsGetBool, hkSvCheatsGetBool);
+
+		Menu::Font = g_VGuiSurface->CreateFont_();	// TODO: Move this
+		g_VGuiSurface->SetFontGlyphSet(Menu::Font, "Source Code Pro", 15, 50, 0, 0, FontFlags::FONTFLAG_OUTLINE);
 	}
 	//--------------------------------------------------------------------------------
 	void Shutdown()
@@ -87,8 +92,7 @@ namespace Hooks
 		if (!cmd || !cmd->command_number)
 			return;
 
-		if (g_Options.misc_bhop)
-			BunnyHop::OnCreateMove(cmd);
+		BunnyHop::OnCreateMove(cmd);
 
 
 		verified->m_cmd = *cmd;
@@ -134,6 +138,9 @@ namespace Hooks
 
 			if (bSkip)
 				return;
+
+			Menu::Paint();
+
 		}
 	}
 	//--------------------------------------------------------------------------------

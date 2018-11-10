@@ -101,6 +101,7 @@
     <ClCompile Include="helpers\vfunc_hook.cpp" />
     <ClCompile Include="hooks.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="options.cpp" />
     <ClCompile Include="valve_sdk\csgostructs.cpp" />
     <ClCompile Include="valve_sdk\sdk.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="hooks.hpp" />
     <ClInclude Include="features\includes.hpp" />
     <ClInclude Include="IRefCounted.h" />
+    <ClInclude Include="menu.hpp" />
     <ClInclude Include="options.hpp" />
     <ClInclude Include="singleton.hpp" />
     <ClInclude Include="valve_sdk\csgostructs.hpp" />
