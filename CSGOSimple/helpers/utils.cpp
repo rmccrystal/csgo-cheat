@@ -3,11 +3,17 @@
 #define NOMINMAX
 #include <Windows.h>
 #include <stdio.h>
-#include <string>
 #include <vector>
+#include <iostream>
+#include <string>         // std::string, std::u32string
+#include <locale>         // std::wstring_convert
+#include <codecvt>        // std::codecvt_utf8
+#include <cstdint>        // std::uint_least32_t
 
 #include "../valve_sdk/csgostructs.hpp"
 #include "Math.hpp"
+
+
 
 
 HANDLE _out = NULL, _old_out = NULL;
@@ -277,5 +283,21 @@ namespace Utils {
 			reinterpret_cast<ServerRankRevealAll>(fnServerRankRevealAll)(v);
 		}
 	}
+
+	std::wstring StringToWstring(std::string str)
+	{
+		std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+		try
+		{
+			return converter.from_bytes(str);
+		}
+		catch (std::range_error)
+		{
+			std::wostringstream s;
+			s << str.c_str();
+			return s.str();
+		}
+	}
+
 
 }

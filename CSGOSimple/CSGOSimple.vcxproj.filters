@@ -16,17 +16,11 @@
     <Filter Include="Header Files\SDK">
       <UniqueIdentifier>{532bd2d3-56d4-4b80-9705-133b9cef34df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\imgui">
-      <UniqueIdentifier>{be04c48c-66c1-4221-ac11-38f6bab82130}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\features">
       <UniqueIdentifier>{2bc982e4-598c-49fb-ad20-458d3b3bc2a8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\SDK">
       <UniqueIdentifier>{edb96b28-881c-4810-bf58-6ef7ed18cd5d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\imgui">
-      <UniqueIdentifier>{162aa2f8-15b9-4b39-a283-b120ebdf8013}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\features">
       <UniqueIdentifier>{69bb20b4-f120-4f70-8694-cf3aaa9c085c}</UniqueIdentifier>
@@ -43,9 +37,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hooks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="options.cpp">
@@ -84,22 +75,7 @@
     <ClCompile Include="valve_sdk\math\VMatrix.cpp">
       <Filter>Source Files\SDK</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\directx9\imgui_impl_dx9.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_draw.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui.cpp">
-      <Filter>Source Files\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="features\bhop.cpp">
-      <Filter>Source Files\features</Filter>
-    </ClCompile>
-    <ClCompile Include="features\chams.cpp">
-      <Filter>Source Files\features</Filter>
-    </ClCompile>
-    <ClCompile Include="features\glow.cpp">
       <Filter>Source Files\features</Filter>
     </ClCompile>
     <ClCompile Include="valve_sdk\misc\Convar.cpp">
@@ -111,17 +87,8 @@
     <ClCompile Include="valve_sdk\netvars.cpp">
       <Filter>Source Files\SDK</Filter>
     </ClCompile>
-    <ClCompile Include="helpers\input.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="render.cpp">
+    <ClCompile Include="draw.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="features\visuals.cpp">
-      <Filter>Source Files\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,15 +233,6 @@
     <ClInclude Include="valve_sdk\sdk.hpp">
       <Filter>Header Files\SDK</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\stb_rect_pack.h">
-      <Filter>Header Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\stb_textedit.h">
-      <Filter>Header Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\stb_truetype.h">
-      <Filter>Header Files\SDK</Filter>
-    </ClInclude>
     <ClInclude Include="valve_sdk\misc\Studio.hpp">
       <Filter>Header Files\SDK</Filter>
     </ClInclude>
@@ -311,9 +269,6 @@
     <ClInclude Include="helpers\math.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="menu.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="options.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -326,28 +281,7 @@
     <ClInclude Include="helpers\vfunc_hook.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\directx9\imgui_impl_dx9.h">
-      <Filter>Header Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_internal.h">
-      <Filter>Header Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui.h">
-      <Filter>Header Files\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imconfig.h">
-      <Filter>Header Files\imgui</Filter>
-    </ClInclude>
     <ClInclude Include="features\bhop.hpp">
-      <Filter>Header Files\features</Filter>
-    </ClInclude>
-    <ClInclude Include="features\chams.hpp">
-      <Filter>Header Files\features</Filter>
-    </ClInclude>
-    <ClInclude Include="features\glow.hpp">
-      <Filter>Header Files\features</Filter>
-    </ClInclude>
-    <ClInclude Include="features\visuals.hpp">
       <Filter>Header Files\features</Filter>
     </ClInclude>
     <ClInclude Include="valve_sdk\csgostructs.hpp">
@@ -356,22 +290,16 @@
     <ClInclude Include="valve_sdk\netvars.hpp">
       <Filter>Header Files\SDK</Filter>
     </ClInclude>
-    <ClInclude Include="helpers\input.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="datamap.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="droid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IRefCounted.h">
       <Filter>Header Files\SDK</Filter>
     </ClInclude>
-    <ClInclude Include="render.hpp">
+    <ClInclude Include="features\includes.hpp">
+      <Filter>Header Files\features</Filter>
+    </ClInclude>
+    <ClInclude Include="draw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

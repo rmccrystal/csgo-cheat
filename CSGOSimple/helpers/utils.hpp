@@ -75,4 +75,6 @@ namespace Utils {
      *
      */
     void RankRevealAll();
+
+	std::wstring StringToWstring(std::string str);
 }

@@ -3,11 +3,13 @@
 #include "IAppSystem.hpp"
 #include "../Math/Vector2D.hpp"
 
-namespace vgui
-{
-    typedef unsigned long HFont;
-    typedef unsigned int VPANEL;
-};
+namespace vgui {
+	typedef unsigned long HFont;
+	typedef unsigned int VPANEL;
+}
+
+typedef unsigned long HFont;
+typedef unsigned int VPANEL;
 
 enum FontFeature
 {

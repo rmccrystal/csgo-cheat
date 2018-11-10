@@ -3,12 +3,9 @@
 
 #include "valve_sdk/sdk.hpp"
 #include "helpers/utils.hpp"
-#include "helpers/input.hpp"
 
 #include "hooks.hpp"
-#include "menu.hpp"
 #include "options.hpp"
-#include "render.hpp"
 
 DWORD WINAPI OnDllAttach(LPVOID base)
 {
@@ -31,9 +28,6 @@ DWORD WINAPI OnDllAttach(LPVOID base)
         Interfaces::Dump();
 
         NetvarSys::Get().Initialize();
-        InputSys::Get().Initialize();
-		Render::Get().Initialize();
-        Menu::Get().Initialize();
 
         Hooks::Initialize();
 
@@ -43,19 +37,14 @@ DWORD WINAPI OnDllAttach(LPVOID base)
         // 
 
         // Panic button
-        InputSys::Get().RegisterHotkey(VK_DELETE, [base]() {
-            g_Unload = true;
-        });
-
-        // Menu Toggle
-        InputSys::Get().RegisterHotkey(VK_INSERT, [base]() {
-            Menu::Get().Toggle();
-        });
 
         Utils::ConsolePrint("Finished.\n");
 
         while(!g_Unload)
-            Sleep(1000);
+			if (GetAsyncKeyState(VK_END) & 0x8000) {
+				g_Unload = true;
+			}
+            Sleep(50);
 
         g_CVar->FindVar("crosshair")->SetValue(true);
 
@@ -82,8 +71,6 @@ BOOL WINAPI OnDllDetach()
 #endif
 
     Hooks::Shutdown();
-
-    Menu::Get().Shutdown();
     return TRUE;
 }
 
