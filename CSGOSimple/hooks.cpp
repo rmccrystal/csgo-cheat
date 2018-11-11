@@ -2,9 +2,8 @@
 #include <intrin.h>  
 #include "options.hpp"
 #include "helpers/utils.hpp"
-#include "features/bhop.hpp"
+#include "features/features.hpp"
 #include "draw.h"
-#include "menu.hpp"
 
 #pragma intrinsic(_ReturnAddress)  
 

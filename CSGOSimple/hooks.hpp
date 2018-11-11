@@ -45,7 +45,7 @@ namespace Hooks
     using DrawModelExecute    = void(__thiscall*)(IVModelRender*, IMatRenderContext*, const DrawModelState_t&, const ModelRenderInfo_t&, matrix3x4_t*);
     using FireEvent           = bool(__thiscall*)(IGameEventManager2*, IGameEvent* pEvent);
     using DoPostScreenEffects = int(__thiscall*)(IClientMode*, int);
-	using OverrideView = void(__thiscall*)(IClientMode*, CViewSetup*);
+	using OverrideView		  = void(__thiscall*)(IClientMode*, CViewSetup*);
 
 
     long __stdcall hkEndScene(IDirect3DDevice9* device);

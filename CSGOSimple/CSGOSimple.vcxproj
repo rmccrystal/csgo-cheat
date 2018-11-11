@@ -101,7 +101,7 @@
     <ClCompile Include="helpers\vfunc_hook.cpp" />
     <ClCompile Include="hooks.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="features\menu.cpp" />
     <ClCompile Include="options.cpp" />
     <ClCompile Include="valve_sdk\csgostructs.cpp" />
     <ClCompile Include="valve_sdk\sdk.cpp" />
@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="datamap.hpp" />
     <ClInclude Include="draw.h" />
+    <ClInclude Include="features\features.hpp" />
     <ClInclude Include="features\bhop.hpp" />
     <ClInclude Include="helpers\math.hpp" />
     <ClInclude Include="helpers\utils.hpp" />
@@ -127,7 +128,7 @@
     <ClInclude Include="hooks.hpp" />
     <ClInclude Include="features\includes.hpp" />
     <ClInclude Include="IRefCounted.h" />
-    <ClInclude Include="menu.hpp" />
+    <ClInclude Include="features\menu.hpp" />
     <ClInclude Include="options.hpp" />
     <ClInclude Include="singleton.hpp" />
     <ClInclude Include="valve_sdk\csgostructs.hpp" />

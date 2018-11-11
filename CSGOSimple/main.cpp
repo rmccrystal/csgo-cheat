@@ -40,11 +40,12 @@ DWORD WINAPI OnDllAttach(LPVOID base)
 
         Utils::ConsolePrint("Finished.\n");
 
-        while(!g_Unload)
-			if (GetAsyncKeyState(VK_END) & 0x8000) {
+		while (!g_Unload) {
+			if (GetAsyncKeyState(VK_END) & 0x8000 || ((GetAsyncKeyState(VK_MENU) & 0x8000) && (GetAsyncKeyState(VK_DELETE) & 0x8000))) {
 				g_Unload = true;
 			}
-            Sleep(50);
+			Sleep(50);
+		}
 
         g_CVar->FindVar("crosshair")->SetValue(true);
 

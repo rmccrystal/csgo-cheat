@@ -1,6 +1,4 @@
 #include "menu.hpp"
-#include "valve_sdk/sdk.hpp"
-#include "draw.h"
 
 HFont Menu::Font;
 
