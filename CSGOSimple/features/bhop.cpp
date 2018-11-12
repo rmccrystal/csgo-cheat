@@ -2,8 +2,11 @@
 
 #include "../valve_sdk/csgostructs.hpp"
 
-void BunnyHop::OnCreateMove(CUserCmd* cmd)
+void BunnyHop::CreateMove(CUserCmd* cmd)
 {
+	if (!g_Options.bhop_enabled)
+		return;
+
 	static bool jumped_last_tick = false;
 	static bool should_fake_jump = false;
 

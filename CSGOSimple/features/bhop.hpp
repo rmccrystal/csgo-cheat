@@ -4,5 +4,5 @@
 
 namespace BunnyHop
 {
-    void OnCreateMove(CUserCmd* cmd);
+    void CreateMove(CUserCmd* cmd);
 }

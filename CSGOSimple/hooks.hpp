@@ -21,6 +21,8 @@ namespace index
 	constexpr auto LockCursor               = 67;
 }
 
+void Init();
+
 namespace Hooks
 {
     void Initialize();

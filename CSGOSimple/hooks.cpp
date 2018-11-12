@@ -7,6 +7,15 @@
 
 #pragma intrinsic(_ReturnAddress)  
 
+void Init()
+{
+	Menu::Font = g_VGuiSurface->CreateFont_();	// TODO: Move this
+	g_VGuiSurface->SetFontGlyphSet(Menu::Font, "Courier New", 16, 50, 0, 0, FontFlags::FONTFLAG_OUTLINE);
+
+	Keybinds::InitHotkeys();
+}
+
+
 namespace Hooks
 {
 	vfunc_hook hlclient_hook;
@@ -48,8 +57,7 @@ namespace Hooks
 
 		sv_cheats.hook_index(index::SvCheatsGetBool, hkSvCheatsGetBool);
 
-		Menu::Font = g_VGuiSurface->CreateFont_();	// TODO: Move this
-		g_VGuiSurface->SetFontGlyphSet(Menu::Font, "Source Code Pro", 15, 50, 0, 0, FontFlags::FONTFLAG_OUTLINE);
+		Init();
 	}
 	//--------------------------------------------------------------------------------
 	void Shutdown()
@@ -91,8 +99,7 @@ namespace Hooks
 		if (!cmd || !cmd->command_number)
 			return;
 
-		BunnyHop::OnCreateMove(cmd);
-
+		BunnyHop::CreateMove(cmd);
 
 		verified->m_cmd = *cmd;
 		verified->m_crc = cmd->GetChecksum();
@@ -139,7 +146,7 @@ namespace Hooks
 				return;
 
 			Menu::Paint();
-
+			Keybinds::Paint();
 		}
 	}
 	//--------------------------------------------------------------------------------
