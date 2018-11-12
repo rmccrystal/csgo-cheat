@@ -299,5 +299,10 @@ namespace Utils {
 		}
 	}
 
+	bool IsKeyDown(int keyCode)
+	{
+		return (GetKeyState(keyCode) & 0x8000);
+	}
+
 
 }

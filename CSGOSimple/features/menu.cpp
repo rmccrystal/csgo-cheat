@@ -2,15 +2,14 @@
 
 HFont Menu::Font;
 
-Vector2D menuPosition(200, 25);
+Vector2D menuPosition(250, 50);
 int nextItemOffset = 0;		// Ofset for drawing the next menu item
-int itemDistance = 20;		// Distance between each item
+int itemDistance = 12;		// Distance between each item
 int statusDistance = 100;	// Distance between the item and the status
 
 void Menu::Paint()
 {
-	Draw::Text(5, 5, "balterhook", Font, Color(255, 255, 255));
-
+	Draw::Text(20, 50, "balterhook", Fonts::MenuFont, Color(255, 255, 255));
 	DrawItems();
 }
 
@@ -19,13 +18,14 @@ void Menu::DrawItems()
 	nextItemOffset = 0;
 
 	DrawBoolItem("Bhop:", g_Options.bhop_enabled);
+	DrawBoolItem("Trigger:", g_Options.triggerbot_enabled);
 }
 
 void Menu::DrawItem(const char * text, const char * status, Color statusColor)
 {
 	Color color = Color(255, 255, 255);
-	Draw::Text(menuPosition.x, menuPosition.y + nextItemOffset, text, Font, color);
-	Draw::Text(menuPosition.x + statusDistance, menuPosition.y + nextItemOffset, status, Font, statusColor);
+	Draw::Text(menuPosition.x, menuPosition.y + nextItemOffset, text, Fonts::MenuFont, color);
+	Draw::Text(menuPosition.x + statusDistance, menuPosition.y + nextItemOffset, status, Fonts::MenuFont, statusColor);
 
 	nextItemOffset += itemDistance;
 }

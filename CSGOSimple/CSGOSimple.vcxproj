@@ -103,6 +103,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="features\menu.cpp" />
     <ClCompile Include="options.cpp" />
+    <ClCompile Include="features\triggerbot.cpp" />
     <ClCompile Include="valve_sdk\csgostructs.cpp" />
     <ClCompile Include="valve_sdk\sdk.cpp" />
     <ClCompile Include="valve_sdk\math\Vector2D.cpp" />
@@ -119,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="datamap.hpp" />
-    <ClInclude Include="draw.h" />
+    <ClInclude Include="draw.hpp" />
     <ClInclude Include="features\features.hpp" />
     <ClInclude Include="features\bhop.hpp" />
     <ClInclude Include="helpers\math.hpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="features\menu.hpp" />
     <ClInclude Include="options.hpp" />
     <ClInclude Include="singleton.hpp" />
+    <ClInclude Include="features\triggerbot.hpp" />
     <ClInclude Include="valve_sdk\csgostructs.hpp" />
     <ClInclude Include="valve_sdk\sdk.hpp" />
     <ClInclude Include="valve_sdk\interfaces\CClientState.hpp" />

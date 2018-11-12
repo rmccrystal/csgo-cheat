@@ -77,4 +77,6 @@ namespace Utils {
     void RankRevealAll();
 
 	std::wstring StringToWstring(std::string str);
+
+	bool IsKeyDown(int keyCode);
 }

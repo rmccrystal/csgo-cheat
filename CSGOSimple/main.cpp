@@ -41,7 +41,7 @@ DWORD WINAPI OnDllAttach(LPVOID base)
         Utils::ConsolePrint("Finished.\n");
 
 		while (!g_Unload) {
-			if (GetAsyncKeyState(VK_END) & 0x8000 || ((GetAsyncKeyState(VK_MENU) & 0x8000) && (GetAsyncKeyState(VK_DELETE) & 0x8000))) {
+			if (Utils::IsKeyDown(VK_END) || ((Utils::IsKeyDown(VK_MENU)) && (Utils::IsKeyDown(VK_DELETE)))) {
 				g_Unload = true;
 			}
 			Sleep(50);

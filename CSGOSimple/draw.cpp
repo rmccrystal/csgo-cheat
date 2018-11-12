@@ -1,4 +1,4 @@
-#include "draw.h"
+#include "draw.hpp"
 #include "valve_sdk/sdk.hpp"
 #include "helpers/utils.hpp"
 
@@ -166,4 +166,13 @@ HFont Draw::CreateDxFont(const char* fontName, int size, int flag)
 	HFont newFont = g_VGuiSurface->CreateFont_();
 	g_VGuiSurface->SetFontGlyphSet(newFont, fontName, size, 0, 0, 0, flag);
 	return newFont;
+}
+
+namespace Fonts {
+	HFont MenuFont;
+
+	void Init()
+	{
+		MenuFont = Draw::CreateDxFont("Calibri Bold", 16, FontFlags::FONTFLAG_OUTLINE);
+	}
 }

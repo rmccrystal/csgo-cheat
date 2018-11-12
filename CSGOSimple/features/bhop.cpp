@@ -1,6 +1,5 @@
 #include "bhop.hpp"
 
-#include "../valve_sdk/csgostructs.hpp"
 
 void BunnyHop::CreateMove(CUserCmd* cmd)
 {

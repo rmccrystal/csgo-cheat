@@ -3,15 +3,13 @@
 #include "options.hpp"
 #include "helpers/utils.hpp"
 #include "features/features.hpp"
-#include "draw.h"
+#include "draw.hpp"
 
 #pragma intrinsic(_ReturnAddress)  
 
 void Init()
 {
-	Menu::Font = g_VGuiSurface->CreateFont_();	// TODO: Move this
-	g_VGuiSurface->SetFontGlyphSet(Menu::Font, "Courier New", 16, 50, 0, 0, FontFlags::FONTFLAG_OUTLINE);
-
+	Fonts::Init();
 	Keybinds::InitHotkeys();
 }
 
@@ -100,6 +98,7 @@ namespace Hooks
 			return;
 
 		BunnyHop::CreateMove(cmd);
+		Triggerbot::CreateMove(cmd);
 
 		verified->m_cmd = *cmd;
 		verified->m_crc = cmd->GetChecksum();
@@ -185,6 +184,8 @@ namespace Hooks
 	void __stdcall hkDrawModelExecute(IMatRenderContext* ctx, const DrawModelState_t& state, const ModelRenderInfo_t& pInfo, matrix3x4_t* pCustomBoneToWorld)
 	{
 		static auto ofunc = mdlrender_hook.get_original<DrawModelExecute>(index::DrawModelExecute);
+
+		Chams::DrawModelExecute(ctx, state, pInfo, pCustomBoneToWorld);
 
 		ofunc(g_MdlRender, ctx, state, pInfo, pCustomBoneToWorld);
 

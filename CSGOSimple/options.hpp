@@ -19,6 +19,16 @@ public:
 	// BHOP
 	//
 	OPTION(bool, bhop_enabled, false);
+
+	//
+	// TRIGGERBOT
+	//
+	OPTION(bool, triggerbot_enabled, false);
+
+	//
+	// CHAMS
+	//
+	OPTION(bool, chams_enabled, true);
 };
 
 extern Config g_Options;

@@ -93,6 +93,9 @@
     <ClCompile Include="features\menu.cpp">
       <Filter>Source Files\features</Filter>
     </ClCompile>
+    <ClCompile Include="features\triggerbot.cpp">
+      <Filter>Source Files\features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="valve_sdk\misc\BaseHandle.hpp">
@@ -302,13 +305,16 @@
     <ClInclude Include="features\includes.hpp">
       <Filter>Header Files\features</Filter>
     </ClInclude>
-    <ClInclude Include="draw.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="features\menu.hpp">
       <Filter>Header Files\features</Filter>
     </ClInclude>
     <ClInclude Include="features\features.hpp">
+      <Filter>Header Files\features</Filter>
+    </ClInclude>
+    <ClInclude Include="draw.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="features\triggerbot.hpp">
       <Filter>Header Files\features</Filter>
     </ClInclude>
   </ItemGroup>

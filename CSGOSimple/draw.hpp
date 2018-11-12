@@ -5,14 +5,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <wchar.h>
-//#include "../fonts.h"
-
-enum ImFontFlags
-{
-	ImFontFlags_None = 1 << 1,
-	ImFontFlags_Outline = 1 << 2,
-	ImFontFlags_Shadow = 1 << 3
-};
 
 namespace Draw
 {
@@ -37,4 +29,9 @@ namespace Draw
 	Vector2D GetTextWSize(const wchar_t* text, HFont font);
 	Vector2D GetTextSize(const char* text, HFont font);
 	HFont CreateDxFont(const char* fontName, int size, int flag = (int)FontFlags::FONTFLAG_DROPSHADOW);
+}
+
+namespace Fonts {
+	void Init();
+	extern HFont MenuFont;
 }

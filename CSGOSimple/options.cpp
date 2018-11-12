@@ -20,7 +20,7 @@ void Keybinds::Paint()
 {
 	for (unsigned int i = 0; i < keyBinds.size(); i++) {
 		keyBind *bind = &keyBinds[i];
-		if (GetKeyState(bind->keyCode) & 0x8000) {	// If the key is pressed
+		if (Utils::IsKeyDown(bind->keyCode)) {	// If the key is pressed
 			if (bind->ready) {
 				bind->function();
 			}
@@ -34,7 +34,8 @@ void Keybinds::Paint()
 
 void Keybinds::InitHotkeys()
 {
-	RegisterBoolHotkey(VK_F6, &g_Options.bhop_enabled);
+	RegisterBoolHotkey(VK_NUMPAD0, &g_Options.bhop_enabled);
+	RegisterBoolHotkey(VK_NUMPAD1, &g_Options.triggerbot_enabled);
 }
 
 void Keybinds::RegisterHotkey(int keyCode, std::function<void(void)> func)
