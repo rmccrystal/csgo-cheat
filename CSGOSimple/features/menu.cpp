@@ -19,6 +19,7 @@ void Menu::DrawItems()
 
 	DrawBoolItem("Bhop:", g_Options.bhop_enabled);
 	DrawBoolItem("Trigger:", g_Options.triggerbot_enabled);
+	DrawBoolItem("Esp:", g_Options.esp_enabled);
 }
 
 void Menu::DrawItem(const char * text, const char * status, Color statusColor)

@@ -95,18 +95,38 @@ namespace Utils {
      */
     bool ConsolePrint(const char* fmt, ...)
     {
-        if(!_out) 
-            return false;
+		if (!_out)
+			return false;
 
-        char buf[1024];
-        va_list va;
+		char buf[1024];
+		va_list va;
 
-        va_start(va, fmt);
-        _vsnprintf_s(buf, 1024, fmt, va);
-        va_end(va);
+		va_start(va, fmt);
+		_vsnprintf_s(buf, 1024, fmt, va);
+		va_end(va);
 
-        return !!WriteConsoleA(_out, buf, static_cast<DWORD>(strlen(buf)), nullptr, nullptr);
+		return !!WriteConsoleA(_out, buf, static_cast<DWORD>(strlen(buf)), nullptr, nullptr);
     }
+
+	bool _ConsolePrint(const char * fmt, ...)
+	{
+		if (!_out)
+			return false;
+
+		char buf[1024];
+		va_list va;
+
+		va_start(va, fmt);
+		_vsnprintf_s(buf, 1024, fmt, va);
+		va_end(va);
+
+		return !!WriteConsoleA(_out, buf, static_cast<DWORD>(strlen(buf)), nullptr, nullptr);
+	}
+
+	bool ConsolePrint(double number)
+	{
+		return ConsolePrint(std::to_string(number).c_str());
+	}
 
     /*
      * @brief Blocks execution until a key is pressed on the console window
@@ -297,6 +317,11 @@ namespace Utils {
 			s << str.c_str();
 			return s.str();
 		}
+	}
+
+	double getMsTime()
+	{
+		return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	}
 
 	bool IsKeyDown(int keyCode)

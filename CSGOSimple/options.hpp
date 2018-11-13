@@ -24,11 +24,18 @@ public:
 	// TRIGGERBOT
 	//
 	OPTION(bool, triggerbot_enabled, false);
+	OPTION(int, triggerbot_min_delay, 5);
+	OPTION(int, triggerbot_max_delay, 30);
 
 	//
 	// CHAMS
 	//
 	OPTION(bool, chams_enabled, true);
+
+	//
+	// ESP
+	//
+	OPTION(bool, esp_enabled, true);
 };
 
 extern Config g_Options;

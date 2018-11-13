@@ -6,6 +6,9 @@
 #include <initializer_list>
 #include "../valve_sdk/sdk.hpp"
 #include "../datamap.hpp"
+#include <ctime>
+#include <chrono>
+#include <string>
 
 namespace Utils {
 	unsigned int FindInDataMap(datamap_t * pMap, const char * name);
@@ -30,6 +33,10 @@ namespace Utils {
      */
     bool ConsolePrint(const char* fmt, ...);
     
+	bool _ConsolePrint(const char* fmt, ...);
+
+	bool ConsolePrint(double number);
+
     /*
      * @brief Blocks execution until a key is pressed on the console window
      *
@@ -77,6 +84,8 @@ namespace Utils {
     void RankRevealAll();
 
 	std::wstring StringToWstring(std::string str);
+
+	double getMsTime();
 
 	bool IsKeyDown(int keyCode);
 }

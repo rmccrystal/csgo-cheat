@@ -8,3 +8,4 @@
 #include <string>
 #include <iostream>
 #include "../helpers/math.hpp"
+#include "../singleton.hpp"
