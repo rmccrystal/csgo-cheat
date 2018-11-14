@@ -8,7 +8,10 @@ static float maxSpread = 0.025;
 void Triggerbot::CreateMove(CUserCmd * cmd)
 {
 
-	if (!g_Options.triggerbot_enabled)
+	if (g_Options.triggerbot_status == TriggerbotStatus::Disabled)
+		return;
+
+	if (g_Options.triggerbot_status == TriggerbotStatus::OnKey && !Utils::IsKeyDown(g_Options.triggerbot_key))
 		return;
 
 	if (!g_LocalPlayer || !g_LocalPlayer->IsAlive())

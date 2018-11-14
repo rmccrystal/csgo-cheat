@@ -3,8 +3,16 @@
 #include <string>
 #include "valve_sdk/Misc/Color.hpp"
 #include <functional>
+#include <Windows.h>	// for VK keys
 
 #define OPTION(type, var, val) type var = val
+
+enum TriggerbotStatus {
+	Disabled,
+	OnKey,
+	Always,
+	End		// Ignore
+};
 
 class Config
 {
@@ -23,7 +31,8 @@ public:
 	//
 	// TRIGGERBOT
 	//
-	OPTION(bool, triggerbot_enabled, false);
+	OPTION(TriggerbotStatus, triggerbot_status, TriggerbotStatus::OnKey);
+	OPTION(int, triggerbot_key, VK_MENU);
 	OPTION(int, triggerbot_min_delay, 5);
 	OPTION(int, triggerbot_max_delay, 30);
 

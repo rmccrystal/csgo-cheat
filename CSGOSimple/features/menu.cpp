@@ -7,6 +7,9 @@ int nextItemOffset = 0;		// Ofset for drawing the next menu item
 int itemDistance = 12;		// Distance between each item
 int statusDistance = 100;	// Distance between the item and the status
 
+Color onColor = Color(0, 255, 255);
+Color offColor = Color(255, 255, 255);
+
 void Menu::Paint()
 {
 	Draw::Text(20, 50, "balterhook", Fonts::MenuFont, Color(255, 255, 255));
@@ -18,7 +21,17 @@ void Menu::DrawItems()
 	nextItemOffset = 0;
 
 	DrawBoolItem("Bhop:", g_Options.bhop_enabled);
-	DrawBoolItem("Trigger:", g_Options.triggerbot_enabled);
+	switch (g_Options.triggerbot_status) {
+	case TriggerbotStatus::Always:
+		DrawItem("Triggerbot:", "Always", onColor);
+		break;
+	case TriggerbotStatus::OnKey:
+		DrawItem("Triggerbot:", "On Key", onColor);
+		break;
+	case TriggerbotStatus::Disabled:
+		DrawItem("Triggerbot:", "OFF", offColor);
+		break;
+	}
 	DrawBoolItem("Esp:", g_Options.esp_enabled);
 }
 
@@ -34,9 +47,9 @@ void Menu::DrawItem(const char * text, const char * status, Color statusColor)
 void Menu::DrawBoolItem(const char *text, bool enabled)
 {
 	if (enabled) {
-		DrawItem(text, "ON", Color(0, 255, 255));
+		DrawItem(text, "ON", onColor);
 	}
 	else {
-		DrawItem(text, "OFF", Color(255, 255, 255));
+		DrawItem(text, "OFF", offColor);
 	}
 }

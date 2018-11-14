@@ -20,4 +20,5 @@ namespace Esp {
 		void RenderHeaddot();
 	};
 	void Paint();
+	RECT GetBBox(C_BaseEntity *ent);
 }

@@ -34,8 +34,15 @@ void Keybinds::Paint()
 
 void Keybinds::InitHotkeys()
 {
-	RegisterBoolHotkey(VK_NUMPAD0, &g_Options.bhop_enabled);
-	RegisterBoolHotkey(VK_NUMPAD1, &g_Options.triggerbot_enabled);
+	RegisterBoolHotkey(VK_F5, &g_Options.bhop_enabled);
+	RegisterHotkey(VK_F6, [] {	// Rotate through triggerbot statuses
+		if (g_Options.triggerbot_status == TriggerbotStatus::Always) {
+			g_Options.triggerbot_status = TriggerbotStatus::Disabled;
+		}
+		else {
+			g_Options.triggerbot_status = static_cast<TriggerbotStatus>(static_cast<int>(g_Options.triggerbot_status) + 1);
+		}
+	});
 }
 
 void Keybinds::RegisterHotkey(int keyCode, std::function<void(void)> func)
@@ -48,7 +55,7 @@ void Keybinds::RegisterHotkey(int keyCode, std::function<void(void)> func)
 }
 
 // Doesn't work
-void Keybinds::RemoveHotkey(int keyCode)	// TODO: FIX this function it doesnt work
+void Keybinds::RemoveHotkey(int keyCode)	// TODO: FIX this function it doesnt work lmao
 {
 	for (keyBind bind : keyBinds) {
 		if (bind.keyCode == keyCode) {
