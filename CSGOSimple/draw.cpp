@@ -67,6 +67,23 @@ void Draw::Rectangle(Vector2D start_pos, Vector2D end_pos, Color col)
 	Rectangle(start_pos.x, start_pos.y, end_pos.x, end_pos.y, col);
 }
 
+void Draw::OutlinedRectangle(int x0, int y0, int x1, int y1, Color col)
+{
+	OutlinedRectangle(x0, y0, x1, y1, col, Color(0, 0, 0));
+}
+
+void Draw::OutlinedRectangle(int x0, int y0, int x1, int y1, Color col, Color outlineColor)
+{
+	Rectangle(x0, y0, x1, y1, col);		// inner rect
+	Rectangle(x0 - 1, y0 - 1, x1 + 1, y1 + 1, outlineColor);
+	Rectangle(x0 + 1, y0 + 1, x1 - 1, y1 - 1, outlineColor);
+}
+
+void Draw::OutlinedRectangle(Vector2D start_pos, Vector2D end_pos, Color col)
+{
+	OutlinedRectangle(start_pos.x, start_pos.y, end_pos.x, end_pos.y, col);
+}
+
 void Draw::Line(int x0, int y0, int x1, int y1, Color col)
 {
 	g_VGuiSurface->DrawSetColor(col);
@@ -175,6 +192,6 @@ namespace Fonts {
 	void Init()
 	{
 		MenuFont = Draw::CreateDxFont("Calibri Bold", 16, FontFlags::FONTFLAG_OUTLINE);
-		ESPFont = Draw::CreateDxFont("Calibri Bold", 16, FontFlags::FONTFLAG_OUTLINE);
+		ESPFont = Draw::CreateDxFont("Calibri", 14, FontFlags::FONTFLAG_OUTLINE);
 	}
 }

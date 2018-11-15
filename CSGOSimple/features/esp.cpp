@@ -17,11 +17,14 @@ void Esp::Paint()
 			if (!entPlayer->IsAlive() || entPlayer->EntIndex() == g_LocalPlayer->EntIndex())	// If player is dead or self
 				continue;
 
-			Player player(entPlayer);
+			std::unique_ptr<Player> player = std::make_unique<Player>(entPlayer);
 
-			player.RenderBox();
-			player.RenderHeaddot();
-			player.RenderName();
+			player->RenderBox();
+			//player->RenderHeaddot();		// Currently doesn't work //TODO: FIX
+			
+			player->RenderHealth();
+			player->RenderWeaponName();
+			//player->RenderName();
 		}
 	}
 }
@@ -84,17 +87,17 @@ Esp::Player::Player(C_BasePlayer * player)
 {
 	this->player = player;
 	this->isEnemy = g_LocalPlayer->m_iTeamNum() != player->m_iTeamNum();
-	this->isVisible = g_LocalPlayer->CanSeePlayer(player, HITBOX_HEAD) || g_LocalPlayer->CanSeePlayer(player, HITBOX_CHEST);
-
+	this->isVisible = g_LocalPlayer->CanSeePlayer(player, HITBOX_HEAD) || g_LocalPlayer->CanSeePlayer(player, HITBOX_CHEST) || g_LocalPlayer->CanSeePlayer(player, HITBOX_RIGHT_FOOT) || g_LocalPlayer->CanSeePlayer(player, HITBOX_LEFT_FOOT);
 	this->headPos = player->GetHitboxPos(HITBOX_HEAD);
 	this->feetPos = Vector(((player->GetHitboxPos(HITBOX_LEFT_FOOT).x + player->GetHitboxPos(HITBOX_RIGHT_FOOT).x) / 2),
 		((player->GetHitboxPos(HITBOX_LEFT_FOOT).y + player->GetHitboxPos(HITBOX_RIGHT_FOOT).y) / 2),
 		((player->GetHitboxPos(HITBOX_LEFT_FOOT).z + player->GetHitboxPos(HITBOX_RIGHT_FOOT).z) / 2)); // Average each foot pos
 	
-	Vector infoPositionVector;
-	Math::WorldToScreen(feetPos, infoPositionVector);
+	this->infoPositionOffset = Vector2D(0, 0);
 
-	this->infoPosition = Vector2D(infoPositionVector.x, infoPositionVector.y);
+	InitBBox();
+
+	this->infoPosition = Vector2D(bbox.right, bbox.bottom);
 
 	/*
 	this->bbox.top = player->GetHitboxPos(HITBOX_HEAD).y;
@@ -102,25 +105,82 @@ Esp::Player::Player(C_BasePlayer * player)
 	this->bbox.left = min(player->GetHitboxPos(HITBOX_LEFT_HAND).x, player->GetHitboxPos(HITBOX_RIGHT_HAND).x);
 	this->bbox.right = max(player->GetHitboxPos(HITBOX_LEFT_HAND).x, player->GetHitboxPos(HITBOX_RIGHT_HAND).x);
 	*/
-	this->bbox = GetBBox(player);
+}
+
+void Esp::Player::UpdateOffset()
+{
+	this->infoPositionOffset.y += 12;
+}
+
+void Esp::Player::InitBBox()
+{
+	auto head = player->GetHitboxPos(HITBOX_HEAD);
+	auto origin = player->m_vecOrigin();
+
+	head.z += 8;	// Fix for weird hitboxes
+
+	if (!Math::WorldToScreen(head, headPos) ||
+		!Math::WorldToScreen(origin, feetPos))
+		return;
+
+	auto h = fabs(headPos.y - feetPos.y);
+	auto w = h / 1.65f;
+
+	bbox.left = static_cast<long>(feetPos.x - w * 0.5f);
+	bbox.right = static_cast<long>(bbox.left + w);
+	bbox.bottom = static_cast<long>(feetPos.y);
+	bbox.top = static_cast<long>(headPos.y);
+}
+
+Color Esp::Player::getColor()
+{
+	static float notVisibleSaturation = 0.45;
+
+	float saturation;
+	if (isVisible)
+		saturation = 1;
+	else
+		saturation = notVisibleSaturation;
+
+	Color color = color.FromHSB((player->m_iHealth() / 100.0) * 0.333, saturation, 1);
+	return color;
+}
+
+void Esp::Player::RenderInfo(char * text)
+{
+	Draw::Text(infoPosition + infoPositionOffset, text, Fonts::ESPFont, getColor());
+	UpdateOffset();
 }
 
 void Esp::Player::RenderBox()
 {
-	Draw::Rectangle(bbox.left, bbox.top, bbox.right, bbox.bottom, Color(255, 255, 255));
+	static int invisibleBrightness = 45;
+
+	Color outlineColor;
+	if (isVisible)
+		outlineColor = Color(0, 0, 0);
+	else
+		outlineColor = Color(invisibleBrightness, invisibleBrightness, invisibleBrightness);
+
+	Draw::OutlinedRectangle(bbox.left, bbox.top, bbox.right, bbox.bottom, getColor(), outlineColor);
 }
 
 void Esp::Player::RenderName()
 {
-	Draw::Text(infoPosition, player->GetPlayerInfo().szName, Fonts::ESPFont, Color(255, 255, 255));
+	RenderInfo(player->GetPlayerInfo().szName);
 }
 
 void Esp::Player::RenderHealth()
 {
+	char text[64];
+	std::string health = std::string("HP: ") + std::to_string(player->m_iHealth());
+	strcpy(text, health.c_str());
+	RenderInfo(text);
 }
 
 void Esp::Player::RenderWeaponName()
 {
+	RenderInfo(Utils::GetWeaponName(player->m_hActiveWeapon()->GetCSWeaponData()));
 }
 
 void Esp::Player::RenderHeaddot()

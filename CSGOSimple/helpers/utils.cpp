@@ -329,5 +329,14 @@ namespace Utils {
 		return (GetKeyState(keyCode) & 0x8000);
 	}
 
+	char * GetWeaponName(CCSWeaponInfo *weapon)
+	{
+		std::string name = weapon->szWeaponName;
+		name.erase(0, 7);
+		name[0] = toupper(name[0]);
+
+		return strdup(name.c_str());
+	}
+
 
 }

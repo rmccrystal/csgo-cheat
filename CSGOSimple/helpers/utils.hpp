@@ -88,4 +88,6 @@ namespace Utils {
 	double getMsTime();
 
 	bool IsKeyDown(int keyCode);
+
+	char * GetWeaponName(CCSWeaponInfo *weapon);
 }

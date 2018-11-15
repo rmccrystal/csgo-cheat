@@ -15,6 +15,9 @@ namespace Draw
 	void FilledRectangle(Vector2D start_pos, Vector2D end_pos, Color col);
 	void Rectangle(int x0, int y0, int x1, int y1, Color col);
 	void Rectangle(Vector2D start_pos, Vector2D end_pos, Color col);
+	void OutlinedRectangle(int x0, int y0, int x1, int y1, Color col);
+	void OutlinedRectangle(int x0, int y0, int x1, int y1, Color col, Color outlineColor);
+	void OutlinedRectangle(Vector2D start_pos, Vector2D end_pos, Color col);
 	void Line(int x0, int y0, int x1, int y1, Color col);
 	void Line(Vector2D start_pos, Vector2D end_pos, Color col);
 	void PolyLine(int* px, int* py, int num_points, Color col);

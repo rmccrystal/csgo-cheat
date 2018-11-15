@@ -34,7 +34,7 @@ public:
 	OPTION(TriggerbotStatus, triggerbot_status, TriggerbotStatus::OnKey);
 	OPTION(int, triggerbot_key, VK_MENU);
 	OPTION(int, triggerbot_min_delay, 5);
-	OPTION(int, triggerbot_max_delay, 30);
+	OPTION(int, triggerbot_max_delay, 20);
 
 	//
 	// CHAMS
