@@ -34,4 +34,5 @@ namespace Draw
 namespace Fonts {
 	void Init();
 	extern HFont MenuFont;
+	extern HFont ESPFont;
 }

@@ -170,9 +170,11 @@ HFont Draw::CreateDxFont(const char* fontName, int size, int flag)
 
 namespace Fonts {
 	HFont MenuFont;
+	HFont ESPFont;
 
 	void Init()
 	{
 		MenuFont = Draw::CreateDxFont("Calibri Bold", 16, FontFlags::FONTFLAG_OUTLINE);
+		ESPFont = Draw::CreateDxFont("Calibri Bold", 16, FontFlags::FONTFLAG_OUTLINE);
 	}
 }

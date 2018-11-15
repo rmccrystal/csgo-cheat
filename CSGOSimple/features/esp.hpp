@@ -11,6 +11,7 @@ namespace Esp {
 		Vector headPos;
 		Vector feetPos;
 		RECT bbox;
+		Vector2D infoPosition;
 
 		Player(C_BasePlayer *player);
 		void RenderBox();

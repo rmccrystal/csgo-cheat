@@ -21,6 +21,7 @@ void Esp::Paint()
 
 			player.RenderBox();
 			player.RenderHeaddot();
+			player.RenderName();
 		}
 	}
 }
@@ -89,6 +90,11 @@ Esp::Player::Player(C_BasePlayer * player)
 	this->feetPos = Vector(((player->GetHitboxPos(HITBOX_LEFT_FOOT).x + player->GetHitboxPos(HITBOX_RIGHT_FOOT).x) / 2),
 		((player->GetHitboxPos(HITBOX_LEFT_FOOT).y + player->GetHitboxPos(HITBOX_RIGHT_FOOT).y) / 2),
 		((player->GetHitboxPos(HITBOX_LEFT_FOOT).z + player->GetHitboxPos(HITBOX_RIGHT_FOOT).z) / 2)); // Average each foot pos
+	
+	Vector infoPositionVector;
+	Math::WorldToScreen(feetPos, infoPositionVector);
+
+	this->infoPosition = Vector2D(infoPositionVector.x, infoPositionVector.y);
 
 	/*
 	this->bbox.top = player->GetHitboxPos(HITBOX_HEAD).y;
@@ -106,6 +112,7 @@ void Esp::Player::RenderBox()
 
 void Esp::Player::RenderName()
 {
+	Draw::Text(infoPosition, player->GetPlayerInfo().szName, Fonts::ESPFont, Color(255, 255, 255));
 }
 
 void Esp::Player::RenderHealth()
@@ -120,5 +127,5 @@ void Esp::Player::RenderHeaddot()
 {
 	Vector screenLocation;
 	Math::WorldToScreen(this->headPos, screenLocation);
-	Draw::FilledCircle(Vector2D(screenLocation.x, screenLocation.y), 30, 1, Color(255, 255, 255));
+	Draw::FilledCircle(Vector2D(screenLocation.x, screenLocation.y), 10, 1, Color(255, 255, 255));
 }
