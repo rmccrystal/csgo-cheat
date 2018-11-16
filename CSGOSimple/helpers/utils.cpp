@@ -125,7 +125,8 @@ namespace Utils {
 
 	bool ConsolePrint(double number)
 	{
-		return ConsolePrint(std::to_string(number).c_str());
+		ConsolePrint(std::to_string(number).c_str());
+		return ConsolePrint("\n");
 	}
 
     /*

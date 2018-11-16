@@ -127,9 +127,9 @@ namespace Hooks
 	{
 		static auto panelId = vgui::VPANEL{ 0 };
 		static auto oPaintTraverse = vguipanel_hook.get_original<PaintTraverse>(index::PaintTraverse);
-
-		oPaintTraverse(g_VGuiPanel, panel, forceRepaint, allowForce);
 		
+		oPaintTraverse(g_VGuiPanel, panel, forceRepaint, allowForce);
+
 		if (!panelId) {
 			const auto panelName = g_VGuiPanel->GetName(panel);
 			if (!strcmp(panelName, "FocusOverlayPanel")) {
@@ -137,12 +137,13 @@ namespace Hooks
 			}
 		}
 		else if (panelId == panel) {
+			/*
 			//Ignore 50% cuz it called very often
 			static bool bSkip = false;
 			bSkip = !bSkip;
 
 			if (bSkip)
-				return;
+				return; */
 
 			Menu::Paint();
 			Keybinds::Paint();

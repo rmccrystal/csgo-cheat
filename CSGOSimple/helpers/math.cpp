@@ -58,7 +58,7 @@ namespace Math
 
         DirectX::XMScalarSinCos(&sp, &cp, DEG2RAD(angles[0]));
         DirectX::XMScalarSinCos(&sy, &cy, DEG2RAD(angles[1]));
-
+		
         forward.x = cp*cy;
         forward.y = cp*sy;
         forward.z = -sp;

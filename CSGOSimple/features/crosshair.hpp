@@ -4,5 +4,9 @@
 
 namespace Crosshair {
 	void Paint();
-	void DrawCrosshair(int x, int y);
+	Vector GetCrosshairPos();
+	Vector GetCrosshairPos1();
+	Vector GetCrosshairPos2();
+	void DrawCrosshair(Vector location, int transparency);
+	void DrawCrosshair(int x, int y, int transparency);
 }
