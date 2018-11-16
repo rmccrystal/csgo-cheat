@@ -33,6 +33,7 @@ void Menu::DrawItems()
 		break;
 	}
 	DrawBoolItem("Esp:", g_Options.esp_enabled);
+	DrawBoolItem("Crosshair:", g_Options.crosshair_enabled);
 }
 
 void Menu::DrawItem(const char * text, const char * status, Color statusColor)

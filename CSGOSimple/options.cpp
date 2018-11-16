@@ -34,7 +34,7 @@ void Keybinds::Paint()
 
 void Keybinds::InitHotkeys()
 {
-	RegisterBoolHotkey(VK_F5, &g_Options.bhop_enabled);
+	RegisterBoolHotkey(VK_F7, &g_Options.bhop_enabled);
 	RegisterHotkey(VK_F6, [] {	// Rotate through triggerbot statuses
 		if (g_Options.triggerbot_status == TriggerbotStatus::Always) {
 			g_Options.triggerbot_status = TriggerbotStatus::Disabled;
@@ -43,6 +43,8 @@ void Keybinds::InitHotkeys()
 			g_Options.triggerbot_status = static_cast<TriggerbotStatus>(static_cast<int>(g_Options.triggerbot_status) + 1);
 		}
 	});
+	RegisterBoolHotkey(VK_F8, &g_Options.crosshair_enabled);
+	RegisterBoolHotkey(VK_F9, &g_Options.esp_enabled);
 }
 
 void Keybinds::RegisterHotkey(int keyCode, std::function<void(void)> func)

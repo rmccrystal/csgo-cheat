@@ -19,6 +19,7 @@ namespace Esp {
 		void InitBBox();
 		Color getColor();
 		void RenderInfo(char *text);
+		void RenderInfo(std::string text);
 		void RenderBox();
 		void RenderName();
 		void RenderHealth();

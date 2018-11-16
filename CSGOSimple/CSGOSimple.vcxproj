@@ -94,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="features\crosshair.cpp" />
     <ClCompile Include="features\esp.cpp" />
     <ClCompile Include="features\esp.hpp" />
     <ClCompile Include="features\chams.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="valve_sdk\netvars.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="features\crosshair.hpp" />
     <ClInclude Include="features\chams.hpp" />
     <ClInclude Include="datamap.hpp" />
     <ClInclude Include="draw.hpp" />

@@ -147,6 +147,7 @@ namespace Hooks
 			Menu::Paint();
 			Keybinds::Paint();
 			Esp::Paint();
+			Crosshair::Paint();
 		}
 	}
 	//--------------------------------------------------------------------------------

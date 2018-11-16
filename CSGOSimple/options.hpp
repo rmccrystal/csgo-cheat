@@ -45,6 +45,12 @@ public:
 	// ESP
 	//
 	OPTION(bool, esp_enabled, true);
+
+	//
+	// CROSSHAIR
+	//
+	OPTION(bool, crosshair_enabled, true);
+	OPTION(Color, crosshair_color, Color(255, 255, 255));
 };
 
 extern Config g_Options;

@@ -5,3 +5,4 @@
 #include "triggerbot.hpp"
 #include "chams.hpp"
 #include "esp.hpp"
+#include "crosshair.hpp"

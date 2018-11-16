@@ -152,6 +152,14 @@ void Esp::Player::RenderInfo(char * text)
 	UpdateOffset();
 }
 
+void Esp::Player::RenderInfo(std::string text)
+{
+	char buff[1024];
+	strcpy(buff, text.c_str());
+	RenderInfo(buff);
+
+}
+
 void Esp::Player::RenderBox()
 {
 	static int invisibleBrightness = 45;
@@ -172,10 +180,8 @@ void Esp::Player::RenderName()
 
 void Esp::Player::RenderHealth()
 {
-	char text[64];
 	std::string health = std::string("HP: ") + std::to_string(player->m_iHealth());
-	strcpy(text, health.c_str());
-	RenderInfo(text);
+	RenderInfo(health);
 }
 
 void Esp::Player::RenderWeaponName()
